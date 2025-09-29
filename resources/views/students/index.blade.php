@@ -1,0 +1,40 @@
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Manage Students') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white p-6 shadow-sm sm:rounded-lg">
+            <a href="{{ route('students.create') }}" class="text-blue-500 underline mb-4 inline-block">Add Student</a>
+
+            <ul>
+                @foreach ($students as $student)
+                    <li class="flex justify-between border-b py-2">
+                        <span>{{ $student->name }}</span>
+                        <div class="flex space-x-4">
+                            <a href="{{ route('students.show', $student->id) }}"
+                               class="bg-gray-500 text-white rounded px-3 py-1 hover:bg-gray-600">
+                               View
+                            </a>
+                            <a href="{{ route('students.edit', $student->id) }}"
+                               class="bg-gray-500 text-white rounded px-3 py-1 hover:bg-gray-600">
+                               Edit
+                            </a>
+                            <form action="{{ route('students.destroy', $student->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button
+                                    class="bg-gray-500 text-white rounded px-3 py-1 hover:bg-gray-600"
+                                    onclick="return confirm('Delete Student?')">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+</x-app-layout>
