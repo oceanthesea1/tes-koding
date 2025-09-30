@@ -33,10 +33,7 @@ class StudentController extends Controller
             'classroom_id' => $request->classroom_id,
         ]);
 
-        return response()->json([
-            'message' => 'Student created successfully',
-            'student' => $student,
-        ],201);
+        return redirect()->route('students.index')->with('success', 'Student created successfully!');
     }
 
     public function create()
@@ -58,10 +55,7 @@ class StudentController extends Controller
 
         $student->save();
 
-        return response()->json([
-            'message' => 'Student updated successfully',
-            'student' => $student,
-        ]);
+        return redirect()->route('students.index')->with('success', 'Student updated successfully!');
     }
 
     public function edit($id)
@@ -81,6 +75,6 @@ class StudentController extends Controller
 
         $student->delete();
 
-        return response()->json(['message' => 'Student deleted successfully']);
+        return redirect()->route('students.index')->with('success', 'Student deleted successfully!');
     }
 }

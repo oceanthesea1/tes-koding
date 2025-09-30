@@ -31,10 +31,7 @@ class ClassroomController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json([
-            'message' => 'Classroom created successfully',
-            'classroom' => $classroom,
-        ],201);
+        return redirect()->route('classrooms.index')->with('success', 'Classroom created successfully!');
     }
 
     public function create()
@@ -54,10 +51,7 @@ class ClassroomController extends Controller
 
         $classroom->save();
 
-        return response()->json([
-            'message' => 'Classroom updated successfully',
-            'classroom' => $classroom
-        ]);
+        return redirect()->route('classrooms.index')->with('success', 'Classroom updated successfully!');
     }
 
     public function edit($id)
@@ -76,6 +70,6 @@ class ClassroomController extends Controller
 
         $classroom->delete();
 
-        return response()->json(['message' => 'Classroom deleted successfully']);
+        return redirect()->route('classrooms.index')->with('success', 'Classroom deleted successfully!');
     }
 }
