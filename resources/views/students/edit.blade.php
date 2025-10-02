@@ -10,6 +10,13 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <div>
+            <x-input-label for="nama_ortu" :value="__('Student Parent Name')" />
+            <x-text-input id="nama_ortu" class="block mt-1 w-full" type="text" name="nama_ortu"
+                :value="old('nama_ortu', $student->nama_ortu)" required autofocus autocomplete="nama_ortu" />
+            <x-input-error :messages="$errors->get('nama_ortu')" class="mt-2" />
+        </div>
+
         <div class="mt-4">
             <x-input-label for="classroom_id" :value="__('Classroom')" />
             <select id="classroom_id" name="classroom_id"

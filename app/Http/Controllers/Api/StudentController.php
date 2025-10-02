@@ -31,6 +31,7 @@ class StudentController extends Controller
         $student = Student::create([
             'name' => $request->name,
             'classroom_id' => $request->classroom_id,
+            'nama_ortu' => $request->nama_ortu,
         ]);
 
         return redirect()->route('students.index')->with('success', 'Student created successfully!');
@@ -52,6 +53,7 @@ class StudentController extends Controller
 
         $student->name = $request->name ?? $student->name;
         $student->classroom_id = $request->classroom_id ?? $student->classroom_id;
+        $student->nama_ortu = $request->nama_ortu ?? $student->nama_ortu;
 
         $student->save();
 

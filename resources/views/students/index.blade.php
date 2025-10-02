@@ -13,6 +13,7 @@
                 @foreach ($students as $student)
                     <li class="flex justify-between border-b py-2">
                         <span>{{ $student->name }}</span>
+                        <span>{{ $student->nama_ortu }}</span>
                         <div class="flex space-x-4">
                             <a href="{{ route('students.show', $student->id) }}"
                                class="bg-gray-500 text-white rounded px-3 py-1 hover:bg-gray-600">
